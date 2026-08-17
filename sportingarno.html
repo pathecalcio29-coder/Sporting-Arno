@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>U.S. Sporting Arno — Scuola Calcio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --sa2-fuchsia: #e91e8c;
+            --sa2-fuchsia-50: #fef0f6;
+            --sa2-fuchsia-100: #fce4f1;
+            --sa2-fuchsia-600: #c41874;
+            --sa2-fuchsia-700: #9b145c;
+            --sa2-black: #0a0a0a;
+            --sa2-gray-50: #fafafa;
+            --sa2-gray-100: #f5f5f5;
+            --sa2-gray-200: #e5e5e5;
+            --sa2-gray-400: #a3a3a3;
+            --sa2-gray-500: #737373;
+            --sa2-gray-600: #525252;
+            --sa2-gray-900: #171717;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: #111;
+            background: #fff;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* HEADER */
+        .sa2-header {
+            background: var(--sa2-black);
+            padding: 0 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            height: 72px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+        .sa2-logo {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            color: #fff;
+            font-weight: 800;
+            font-size: 20px;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+        }
+        .sa2-logo-mark {
+            width: 40px; height: 40px;
+            background: var(--sa2-fuchsia);
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 16px; font-weight: 900; color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+        .sa2-logo-mark::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.15) 100%);
+        }
+        .sa2-nav { display: flex; gap: 8px; align-items: center; }
+        .sa2-nav a {
+            color: rgba(255,255,255,0.55);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+        .sa2-nav a:hover { color: #fff; background: rgba(255,255,255,0.06); }
+        .sa2-nav a.active { color: var(--sa2-fuchsia); background: rgba(233,30,140,0.08); }
+        .sa2-nav-cta {
+            background: var(--sa2-fuchsia);
+            color: #fff !important;
+            padding: 10px 22px !important;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 13px;
+            margin-left: 8px;
+            transition: all 0.2s ease;
+        }
+        .sa2-nav-cta:hover { background: var(--sa2-fuchsia-600) !important; }
+        .sa2-menu-btn {
+            display: none;
+            background: none; border: none;
+            color: #fff; cursor: pointer;
+        }
+
+        /* HERO */
+        .sa2-hero {
+            background: var(--sa2-black);
+            color: #fff;
+            padding: 120px 32px 140px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .sa2-hero-pattern {
+            position: absolute;
+            inset: 0;
+            opacity: 0.04;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .sa2-hero-glow {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px; height: 800px;
+            background: radial-gradient(circle, rgba(233,30,140,0.12) 0%, transparent 60%);
+            pointer-events: none;
+        }
+        .sa2-hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 760px;
+            margin: 0 auto;
+        }
+        .sa2-hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(233,30,140,0.12);
+            border: 1px solid rgba(233,30,140,0.2);
+            color: var(--sa2-fuchsia);
+            padding: 8px 18px;
+            border-radius: 100px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 28px;
+            letter-spacing: 0.3px;
+        }
+        .sa2-hero-badge svg { width: 14px; height: 14px; }
+        .sa2-hero h1 {
+            font-size: 64px;
+            font-weight: 900;
+            line-height: 1.05;
+            margin-bottom: 24px;
+            letter-spacing: -2px;
+        }
+        .sa2-hero h1 em {
+            color: var(--sa2-fuchsia);
+            font-style: normal;
+            position: relative;
+        }
+        .sa2-hero h1 em::after {
+            content: '';
+            position: absolute;
+            bottom: 4px; left: 0; right: 0;
+            height: 8px;
+            background: rgba(233,30,140,0.2);
+            border-radius: 4px;
+            z-index: -1;
+        }
+        .sa2-hero p {
+            font-size: 20px;
+            color: rgba(255,255,255,0.55);
+            max-width: 520px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
+            font-weight: 400;
+        }
+        .sa2-hero-btns {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .sa2-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            border: none;
+        }
+        .sa2-btn-primary {
+            background: var(--sa2-fuchsia);
+            color: #fff;
+            box-shadow: 0 4px 20px rgba(233,30,140,0.3);
+        }
+        .sa2-btn-primary:hover {
+            background: var(--sa2-fuchsia-600);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(233,30,140,0.4);
+        }
+        .sa2-btn-ghost {
+            background: rgba(255,255,255,0.05);
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.12);
+        }
+        .sa2-btn-ghost:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.2);
+        }
+
+        /* MARQUEE STATS */
+        .sa2-marquee {
+            background: var(--sa2-black);
+            border-top: 1px solid rgba(255,255,255,0.06);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            padding: 28px 0;
+            overflow: hidden;
+            position: relative;
+        }
+        .sa2-marquee-track {
+            display: flex;
+            gap: 80px;
+            animation: sa2-scroll 20s linear infinite;
+            width: max-content;
+        }
+        .sa2-marquee:hover .sa2-marquee-track { animation-play-state: paused; }
+        @keyframes sa2-scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .sa2-marquee-item {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            white-space: nowrap;
+        }
+        .sa2-marquee-num {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--sa2-fuchsia);
+            font-variant-numeric: tabular-nums;
+        }
+        .sa2-marquee-label {
+            font-size: 14px;
+            color: rgba(255,255,255,0.4);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* SECTIONS */
+        .sa2-section {
+            padding: 100px 32px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .sa2-section-alt { background: var(--sa2-gray-50); }
+        .sa2-section-header {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            margin-bottom: 56px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .sa2-section-label {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--sa2-fuchsia);
+            margin-bottom: 12px;
+        }
+        .sa2-section-title {
+            font-size: 40px;
+            font-weight: 800;
+            color: var(--sa2-black);
+            letter-spacing: -1.5px;
+            line-height: 1.1;
+        }
+        .sa2-section-desc {
+            color: var(--sa2-gray-500);
+            font-size: 17px;
+            line-height: 1.6;
+            max-width: 480px;
+        }
+
+        /* FEATURE GRID */
+        .sa2-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        .sa2-feature {
+            background: #fff;
+            border: 1px solid var(--sa2-gray-200);
+            border-radius: 16px;
+            padding: 40px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .sa2-feature::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 3px;
+            background: var(--sa2-fuchsia);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+        }
+        .sa2-feature:hover {
+            border-color: var(--sa2-fuchsia);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.06);
+            transform: translateY(-4px);
+        }
+        .sa2-feature:hover::before { transform: scaleX(1); }
+        .sa2-feature-icon {
+            width: 52px; height: 52px;
+            background: var(--sa2-fuchsia-50);
+            border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 24px;
+            color: var(--sa2-fuchsia);
+            transition: all 0.3s ease;
+        }
+        .sa2-feature:hover .sa2-feature-icon {
+            background: var(--sa2-fuchsia);
+            color: #fff;
+            transform: scale(1.08) rotate(-4deg);
+        }
+        .sa2-feature h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--sa2-black);
+        }
+        .sa2-feature p {
+            font-size: 15px;
+            color: var(--sa2-gray-500);
+            line-height: 1.7;
+        }
+
+        /* TEAMS */
+        .sa2-teams {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+        .sa2-team {
+            background: #fff;
+            border: 1px solid var(--sa2-gray-200);
+            border-radius: 16px;
+            padding: 32px 28px;
+            text-align: center;
+            transition: all 0.25s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .sa2-team::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 0;
+            background: var(--sa2-fuchsia);
+            transition: height 0.3s ease;
+        }
+        .sa2-team:hover {
+            border-color: var(--sa2-fuchsia);
+            box-shadow: 0 12px 40px rgba(233,30,140,0.08);
+            transform: translateY(-3px);
+        }
+        .sa2-team:hover::after { height: 4px; }
+        .sa2-team-cat {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--sa2-fuchsia);
+            margin-bottom: 10px;
+        }
+        .sa2-team-name {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--sa2-black);
+            letter-spacing: -0.5px;
+        }
+        .sa2-team-meta {
+            font-size: 13px;
+            color: var(--sa2-gray-400);
+            margin-top: 8px;
+        }
+
+        /* QUOTE */
+        .sa2-quote {
+            background: var(--sa2-black);
+            color: #fff;
+            padding: 100px 32px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .sa2-quote-accent {
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--sa2-fuchsia), transparent);
+        }
+        .sa2-quote blockquote {
+            font-size: 32px;
+            font-weight: 500;
+            font-style: italic;
+            max-width: 800px;
+            margin: 0 auto 28px;
+            line-height: 1.4;
+            color: rgba(255,255,255,0.9);
+            position: relative;
+            z-index: 1;
+        }
+        .sa2-quote blockquote span { color: var(--sa2-fuchsia); }
+        .sa2-quote cite {
+            font-size: 14px;
+            color: rgba(255,255,255,0.4);
+            font-style: normal;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* NEWS */
+        .sa2-news-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .sa2-news-card {
+            background: #fff;
+            border: 1px solid var(--sa2-gray-200);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .sa2-news-card:hover {
+            border-color: var(--sa2-fuchsia);
+            box-shadow: 0 16px 48px rgba(0,0,0,0.06);
+            transform: translateY(-4px);
+        }
+        .sa2-news-img {
+            height: 180px;
+            background: linear-gradient(135deg, var(--sa2-fuchsia-100), var(--sa2-fuchsia-50));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .sa2-news-img svg {
+            width: 48px; height: 48px;
+            color: var(--sa2-fuchsia);
+            opacity: 0.3;
+        }
+        .sa2-news-img::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.03) 100%);
+        }
+        .sa2-news-body {
+            padding: 28px;
+        }
+        .sa2-news-date {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--sa2-fuchsia);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+        .sa2-news-body h3 {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--sa2-black);
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+        .sa2-news-body p {
+            font-size: 14px;
+            color: var(--sa2-gray-500);
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+        .sa2-news-link {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--sa2-fuchsia);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: gap 0.2s;
+        }
+        .sa2-news-link:hover { gap: 10px; }
+
+        /* CONTACT */
+        .sa2-contact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .sa2-contact-card {
+            background: #fff;
+            border: 1px solid var(--sa2-gray-200);
+            border-radius: 16px;
+            padding: 36px;
+            text-align: center;
+            transition: all 0.25s ease;
+        }
+        .sa2-contact-card:hover {
+            border-color: var(--sa2-fuchsia);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.04);
+            transform: translateY(-3px);
+        }
+        .sa2-contact-icon {
+            width: 56px; height: 56px;
+            background: var(--sa2-fuchsia-50);
+            border-radius: 16px;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--sa2-fuchsia);
+        }
+        .sa2-contact-card h4 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--sa2-black);
+        }
+        .sa2-contact-card p {
+            font-size: 14px;
+            color: var(--sa2-gray-500);
+            line-height: 1.6;
+        }
+        .sa2-contact-card a {
+            color: var(--sa2-fuchsia);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .sa2-contact-card a:hover { text-decoration: underline; }
+
+        /* FOOTER */
+        .sa2-footer {
+            background: var(--sa2-black);
+            color: rgba(255,255,255,0.35);
+            padding: 60px 32px 40px;
+        }
+        .sa2-footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+        .sa2-footer-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #fff;
+            font-weight: 800;
+            font-size: 18px;
+            text-decoration: none;
+            margin-bottom: 16px;
+        }
+        .sa2-footer-brand .sa2-logo-mark {
+            width: 36px; height: 36px;
+            font-size: 14px;
+            border-radius: 8px;
+        }
+        .sa2-footer-about {
+            font-size: 14px;
+            line-height: 1.7;
+            color: rgba(255,255,255,0.4);
+            max-width: 280px;
+        }
+        .sa2-footer-col h5 {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 20px;
+        }
+        .sa2-footer-col a {
+            display: block;
+            color: rgba(255,255,255,0.35);
+            text-decoration: none;
+            font-size: 14px;
+            padding: 6px 0;
+            transition: color 0.2s;
+        }
+        .sa2-footer-col a:hover { color: var(--sa2-fuchsia); }
+        .sa2-footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.06);
+            padding-top: 24px;
+            text-align: center;
+            font-size: 13px;
+        }
+        .sa2-footer-bottom strong { color: var(--sa2-fuchsia); font-weight: 600; }
+
+        /* ANIMATIONS */
+        @keyframes sa2-fadeUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .sa2-anim {
+            opacity: 0;
+            animation: sa2-fadeUp 0.8s cubic-bezier(0.4,0,0.2,1) forwards;
+        }
+        .sa2-d1 { animation-delay: 0.1s; }
+        .sa2-d2 { animation-delay: 0.2s; }
+        .sa2-d3 { animation-delay: 0.3s; }
+        .sa2-d4 { animation-delay: 0.4s; }
+        .sa2-d5 { animation-delay: 0.5s; }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .sa2-features { grid-template-columns: 1fr; }
+            .sa2-teams { grid-template-columns: repeat(2, 1fr); }
+            .sa2-news-grid { grid-template-columns: 1fr; }
+            .sa2-contact-grid { grid-template-columns: 1fr; }
+            .sa2-footer-inner { grid-template-columns: 1fr 1fr; }
+            .sa2-hero h1 { font-size: 44px; }
+            .sa2-section-title { font-size: 32px; }
+        }
+        @media (max-width: 640px) {
+            .sa2-header { padding: 0 20px; height: 64px; }
+            .sa2-nav { display: none; position: absolute; top: 64px; left: 0; right: 0; background: var(--sa2-black); flex-direction: column; padding: 20px; gap: 4px; }
+            .sa2-nav.active { display: flex; }
+            .sa2-nav a { width: 100%; text-align: center; }
+            .sa2-menu-btn { display: block; }
+            .sa2-hero { padding: 80px 20px 100px; }
+            .sa2-hero h1 { font-size: 34px; letter-spacing: -1px; }
+            .sa2-hero p { font-size: 17px; }
+            .sa2-section { padding: 64px 20px; }
+            .sa2-section-header { flex-direction: column; align-items: flex-start; }
+            .sa2-teams { grid-template-columns: 1fr; }
+            .sa2-footer-inner { grid-template-columns: 1fr; gap: 32px; }
+            .sa2-marquee-item { gap: 40px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="sa2-header">
+        <a href="#" class="sa2-logo">
+            <div class="sa2-logo-mark">SA</div>
+            <span>SPORTING ARNO</span>
+        </a>
+        <button class="sa2-menu-btn" onclick="document.querySelector('.sa2-nav').classList.toggle('active')" aria-label="Menu">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <nav class="sa2-nav">
+            <a class="active">Home</a>
+            <a>Società</a>
+            <a>Squadre</a>
+            <a>News</a>
+            <a>Contatti</a>
+            <a class="sa2-nav-cta">Iscriviti ora</a>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="sa2-hero">
+        <div class="sa2-hero-pattern"></div>
+        <div class="sa2-hero-glow"></div>
+        <div class="sa2-hero-content">
+            <div class="sa2-hero-badge sa2-anim sa2-d1">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                Scuola calcio dal 1979
+            </div>
+            <h1 class="sa2-anim sa2-d2">Coltiviamo il talento,<br><em>rispettiamo i valori</em></h1>
+            <p class="sa2-anim sa2-d3">Da anni un punto di riferimento per il calcio giovanile in Toscana. Sul campo di Badia a Settimo, dove ogni ragazzo può crescere.</p>
+            <div class="sa2-hero-btns sa2-anim sa2-d4">
+                <a class="sa2-btn sa2-btn-primary">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    Scopri le squadre
+                </a>
+                <a class="sa2-btn sa2-btn-ghost">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    Contattaci
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- MARQUEE STATS -->
+    <div class="sa2-marquee">
+        <div class="sa2-marquee-track">
+            <div class="sa2-marquee-item"><span class="sa2-marquee-num">1979</span><span class="sa2-marquee-label">Fondazione</span></div>
+            <div class="sa2-marquee-item"><span class="sa2-marquee-num">15+</span><span class="sa2-marquee-label">Squadre</span></div>
+            <div class="sa2-marquee-item"><span class="sa2-marquee-num">200+</span><span class="sa2-marquee-label">Atleti</span></div>
+            <div class="sa2-marquee-item"><span class="sa2-marquee-num">45</span><span class="sa2-marquee-label">Anni di storia</span></div>
+            <div class="sa2-marquee-item"><span class="sa2-marquee-num">Badia a Settimo</span><span class="sa2-marquee-label">Campo</span></div>
+            <div class="sa2-marquee-item"><span class="sa2-marquee-num">Scandicci</span><span class="sa2-marquee-label">FI</span></div>
+            <div class="sa2-marquee-item"><span class="sa2-marquee-num">1979</span><span class="sa2-marquee-label">Fondazione</span></div>
+            <div class="sa2-marquee-item"><span class="sa2-marquee-num">15+</span><span class="sa2-marquee-label">Squadre</span></div>
+            <div class="sa2-marquee-item"><span class="sa2-marquee-num">200+</span><span class="sa2-marquee-label">Atleti</span></div>
+            <div class="sa2-marquee-item"><span class="sa2-marquee-num">45</span><span class="sa2-marquee-label">Anni di storia</span></div>
+            <div class="sa2-marquee-item"><span class="sa2-marquee-num">Badia a Settimo</span><span class="sa2-marquee-label">Campo</span></div>
+            <div class="sa2-marquee-item"><span class="sa2-marquee-num">Scandicci</span><span class="sa2-marquee-label">FI</span></div>
+        </div>
+    </div>
+
+    <!-- FEATURES -->
+    <section class="sa2-section">
+        <div class="sa2-section-header">
+            <div>
+                <div class="sa2-section-label">La nostra filosofia</div>
+                <h2 class="sa2-section-title">Perché Sporting Arno</h2>
+            </div>
+            <p class="sa2-section-desc">Non siamo solo una scuola calcio: siamo una comunità dove ogni ragazzo può crescere.</p>
+        </div>
+        <div class="sa2-features">
+            <div class="sa2-feature sa2-anim sa2-d1">
+                <div class="sa2-feature-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+                </div>
+                <h3>Settore giovanile d'élite</h3>
+                <p>Percorso formativo strutturato per accompagnare gli atleti dai primi calci fino alle categorie agonistiche, con un metodo collaudato in 45 anni di attività.</p>
+            </div>
+            <div class="sa2-feature sa2-anim sa2-d2">
+                <div class="sa2-feature-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </div>
+                <h3>Staff tecnico qualificato</h3>
+                <p>Allenatori certificati e preparatori dedicati che mettono al centro la crescita individuale e collettiva di ogni atleta.</p>
+            </div>
+            <div class="sa2-feature sa2-anim sa2-d3">
+                <div class="sa2-feature-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                </div>
+                <h3>Strutture all'avanguardia</h3>
+                <p>Campi e attrezzature pensati per garantire sicurezza e le migliori condizioni di allenamento in ogni stagione.</p>
+            </div>
+            <div class="sa2-feature sa2-anim sa2-d4">
+                <div class="sa2-feature-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                </div>
+                <h3>Valori educativi</h3>
+                <p>Fair play, disciplina e spirito di gruppo sono le fondamenta di ogni nostra attività, dentro e fuori dal campo.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- TEAMS -->
+    <section class="sa2-section sa2-section-alt">
+        <div class="sa2-section-header">
+            <div>
+                <div class="sa2-section-label">I nostri colori</div>
+                <h2 class="sa2-section-title">Le squadre</h2>
+            </div>
+            <p class="sa2-section-desc">Dalla scuola calcio al settore giovanile agonistico, un percorso per ogni età.</p>
+        </div>
+        <div class="sa2-teams">
+            <div class="sa2-team sa2-anim sa2-d1">
+                <div class="sa2-team-cat">Scuola calcio</div>
+                <div class="sa2-team-name">Piccoli Amici</div>
+                <div class="sa2-team-meta">2018-2019</div>
+            </div>
+            <div class="sa2-team sa2-anim sa2-d2">
+                <div class="sa2-team-cat">Scuola calcio</div>
+                <div class="sa2-team-name">Primi Calci</div>
+                <div class="sa2-team-meta">2016-2017</div>
+            </div>
+            <div class="sa2-team sa2-anim sa2-d3">
+                <div class="sa2-team-cat">Scuola calcio</div>
+                <div class="sa2-team-name">Pulcini</div>
+                <div class="sa2-team-meta">2014-2015</div>
+            </div>
+            <div class="sa2-team sa2-anim sa2-d1">
+                <div class="sa2-team-cat">Giovanile</div>
+                <div class="sa2-team-name">Esordienti</div>
+                <div class="sa2-team-meta">2012-2013</div>
+            </div>
+            <div class="sa2-team sa2-anim sa2-d2">
+                <div class="sa2-team-cat">Giovanile</div>
+                <div class="sa2-team-name">Giovanissimi</div>
+                <div class="sa2-team-meta">2010-2011</div>
+            </div>
+            <div class="sa2-team sa2-anim sa2-d3">
+                <div class="sa2-team-cat">Giovanile</div>
+                <div class="sa2-team-name">Allievi</div>
+                <div class="sa2-team-meta">2008-2009</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- QUOTE -->
+    <section class="sa2-quote">
+        <div class="sa2-quote-accent"></div>
+        <blockquote>"Il calcio è la nostra <span>lingua</span>, il divertimento è il nostro <span>motore</span>, l'eccellenza è il nostro <span>obiettivo</span>."</blockquote>
+        <cite>— U.S. Sporting Arno</cite>
+    </section>
+
+    <!-- NEWS -->
+    <section class="sa2-section">
+        <div class="sa2-section-header">
+            <div>
+                <div class="sa2-section-label">Aggiornamenti</div>
+                <h2 class="sa2-section-title">Ultime notizie</h2>
+            </div>
+            <a class="sa2-btn sa2-btn-primary" style="padding: 10px 24px; font-size: 13px;">Vedi tutte</a>
+        </div>
+        <div class="sa2-news-grid">
+            <div class="sa2-news-card sa2-anim sa2-d1">
+                <div class="sa2-news-img">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+                </div>
+                <div class="sa2-news-body">
+                    <div class="sa2-news-date">15 Ago 2026</div>
+                    <h3>Inizio stagione 2026/2027</h3>
+                    <p>Tutte le squadre tornano in campo per la preparazione pre-campionato.</p>
+                    <a class="sa2-news-link">Leggi tutto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+                </div>
+            </div>
+            <div class="sa2-news-card sa2-anim sa2-d2">
+                <div class="sa2-news-img">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </div>
+                <div class="sa2-news-body">
+                    <div class="sa2-news-date">10 Ago 2026</div>
+                    <h3>Nuovi arrivi nello staff</h3>
+                    <p>Benvenuti ai nuovi allenatori che si uniscono al progetto Sporting Arno.</p>
+                    <a class="sa2-news-link">Leggi tutto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+                </div>
+            </div>
+            <div class="sa2-news-card sa2-anim sa2-d3">
+                <div class="sa2-news-img">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+                </div>
+                <div class="sa2-news-body">
+                    <div class="sa2-news-date">05 Ago 2026</div>
+                    <h3>Open Day: prova gratis!</h3>
+                    <p>Sabato 23 agosto porta tuo figlio a provare l'esperienza Sporting Arno.</p>
+                    <a class="sa2-news-link">Leggi tutto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="sa2-section sa2-section-alt">
+        <div class="sa2-section-header" style="justify-content: center; text-align: center;">
+            <div>
+                <div class="sa2-section-label">Dove siamo</div>
+                <h2 class="sa2-section-title">Resta in contatto</h2>
+                <p class="sa2-section-desc" style="margin: 12px auto 0;">Vieni a trovarci sul campo di Badia a Settimo, Scandicci (FI).</p>
+            </div>
+        </div>
+        <div class="sa2-contact-grid">
+            <div class="sa2-contact-card sa2-anim sa2-d1">
+                <div class="sa2-contact-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                </div>
+                <h4>Sede</h4>
+                <p>Via S. Colombano, 31<br>Scandicci (FI), 50018</p>
+            </div>
+            <div class="sa2-contact-card sa2-anim sa2-d2">
+                <div class="sa2-contact-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                </div>
+                <h4>Email</h4>
+                <p><a href="mailto:info@sportingarno.it">info@sportingarno.it</a></p>
+            </div>
+            <div class="sa2-contact-card sa2-anim sa2-d3">
+                <div class="sa2-contact-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </div>
+                <h4>Telefono</h4>
+                <p><a href="tel:+390551234567">+39 055 123 4567</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="sa2-footer">
+        <div class="sa2-footer-inner">
+            <div>
+                <a href="#" class="sa2-footer-brand">
+                    <div class="sa2-logo-mark">SA</div>
+                    <span>SPORTING ARNO</span>
+                </a>
+                <p class="sa2-footer-about">Scuola calcio fondata nel 1979 a Badia a Settimo, Scandicci. Da sempre punto di riferimento per il calcio giovanile in Toscana.</p>
+            </div>
+            <div class="sa2-footer-col">
+                <h5>Navigazione</h5>
+                <a href="#">Home</a>
+                <a href="#">Società</a>
+                <a href="#">Squadre</a>
+                <a href="#">News</a>
+            </div>
+            <div class="sa2-footer-col">
+                <h5>Risorse</h5>
+                <a href="#">Calendario</a>
+                <a href="#">Classifiche</a>
+                <a href="#">Galleria</a>
+                <a href="#">Shop</a>
+            </div>
+            <div class="sa2-footer-col">
+                <h5>Legale</h5>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Cookie Policy</a>
+                <a href="#">Statuto</a>
+                <a href="#">Contatti</a>
+            </div>
+        </div>
+        <div class="sa2-footer-bottom">
+            <p>© 2026 <strong>U.S. Sporting Arno</strong> — Scuola Calcio. Tutti i diritti riservati.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
